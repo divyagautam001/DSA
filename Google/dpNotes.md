@@ -1,8 +1,8 @@
 <h3> Dynamic Programming Problem Attributes </h3>
-• The question is asking for the maximum or minimum of something
-• We have to make decision that may depend on previous decision/s
-• Overlapping subproblems, Optimal sub structure
-• Patterns 
+• The question is asking for the maximum or minimum of something  
+• We have to make decision that may depend on previous decision/s  
+• Overlapping subproblems, Optimal sub structure  
+• Patterns   
   -What is the minimum cost of doing...
   -What is the maximum profit from...
   -How many ways are there to do...
