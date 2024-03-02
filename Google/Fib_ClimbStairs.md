@@ -1,4 +1,4 @@
-#H1 Fib/Count stairs
+# H1 Fib/Count stairs
 
 Think about what happens on the n-th step. You can get to it either from (n - 1) step, or from (n - 2) step.
 Say there are x distinct ways to get to (n - 1) step, and y distinct ways to get to (n - 2) step.
