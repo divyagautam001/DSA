@@ -41,8 +41,14 @@ public class Main {
     }
 }
 
-// divide and conquer approach, leveraging binary search and recursion to locate the positions of 1s. Here's how it can be done:
-//Divide the array into two halves.
-//Recursively search each half.
-//Merge the results obtained from both halves.
-// Not exacly log but better than linear search
+/* 
+
+Divide and conquer approach, leveraging binary search principles locate the positions of 1s. Here's how it can be done:
+Initialize an empty list to store the positions of 1s.
+Start with the entire range [0, M-1].
+Divide the range into two halves and query each half.
+If the left half contains at least one 1, update the right boundary to mid - 1.
+Otherwise, update the left boundary to mid + 1.
+Repeat steps 3-5 until the left boundary exceeds the right boundary.
+Return the list of positions of 1s.
+    */
