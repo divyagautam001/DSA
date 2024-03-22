@@ -1,5 +1,6 @@
 // O(NlogN) where N is number of reservations
-//
+// Sort by start time and iterate through given intervals, maintaining a count of people present in the restaurant at any given time. 
+// Check if accommodating additional people (up to a given limit) would exceed the restaurant's capacity.
 
 
 import java.util.*;
