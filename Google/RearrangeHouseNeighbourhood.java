@@ -1,4 +1,6 @@
 /*
+
+O(m*n(log mn))
 We can use heap and queue to solve this problem.
 
 We can get the houses with colors and put them in a min heap.
