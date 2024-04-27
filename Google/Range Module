@@ -1,0 +1,64 @@
+class RangeModule {
+    TreeSet<Interval> ranges; // Declare a TreeSet to store intervals
+
+    public RangeModule() {
+        ranges = new TreeSet(); // Initialize the TreeSet in the constructor
+    }
+
+    public void addRange(int left, int right) {
+        Iterator<Interval> itr = ranges.tailSet(new Interval(0, left - 1)).iterator(); // Get an iterator for all intervals that are not less than the new interval
+        while (itr.hasNext()) {
+            Interval iv = itr.next(); // Get the next interval
+            if (right < iv.left) {
+                break; // If the new interval does not overlap with the current interval, break the loop
+            }
+            left = Math.min(left, iv.left); // Update the left boundary of the new interval
+            right = Math.max(right, iv.right); // Update the right boundary of the new interval
+            itr.remove(); // Remove the current interval as it is covered by the new interval
+        }
+        ranges.add(new Interval(left, right)); // Add the new interval
+    }
+
+    public boolean queryRange(int left, int right) {
+        Interval iv = ranges.higher(new Interval(0, left)); // Get the smallest interval that is greater than the new interval
+        return (iv != null && iv.left <= left && right <= iv.right); // Return true if the new interval is covered by an existing interval
+    }
+
+    public void removeRange(int left, int right) {
+        Iterator<Interval> itr = ranges.tailSet(new Interval(0, left)).iterator(); // Get an iterator for all intervals that are not less than the new interval
+        ArrayList<Interval> todo = new ArrayList(); // Create a list to store the intervals that need to be added back
+        while (itr.hasNext()) {
+            Interval iv = itr.next(); // Get the next interval
+            if (right < iv.left) {
+                break; // If the new interval does not overlap with the current interval, break the loop
+            }
+            if (iv.left < left) {
+                todo.add(new Interval(iv.left, left)); // If the left part of the current interval is not covered by the new interval, add it to the list
+            }
+            if (right < iv.right) {
+                todo.add(new Interval(right, iv.right)); // If the right part of the current interval is not covered by the new interval, add it to the list
+            }
+            itr.remove(); // Remove the current interval as it is covered by the new interval
+        }
+        for (Interval iv: todo) {
+            ranges.add(iv); // Add all intervals in the list back to the TreeSet
+        }
+    }
+}
+
+class Interval implements Comparable<Interval>{
+    int left;
+    int right;
+
+    public Interval(int left, int right){
+        this.left = left; // Initialize the left boundary
+        this.right = right; // Initialize the right boundary
+    }
+
+    public int compareTo(Interval that){
+        if (this.right == that.right) {
+            return this.left - that.left; // If two intervals have the same right boundary, sort them by the left boundary
+        }
+        return this.right - that.right; // Otherwise, sort them by the right boundary
+    }
+}
