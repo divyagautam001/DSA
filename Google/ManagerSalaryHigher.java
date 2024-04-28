@@ -1,11 +1,15 @@
 /*
 
 DFS O(n)
-Define a class Employee with properties salary, left and right. The left and right properties represent the left and right subordinates of an employee in the binary tree.
+Define a class Employee with properties salary, left and right.
+The left and right properties represent the left and right subordinates of an employee in the binary tree.
 Create a recursive function isManagerSalaryHigher that takes an Employee object as input.
-In this function, first check if the employee is a leaf node (i.e., has no subordinates). If so, return true since this employee is not a manager.
-Calculate the total salary of the subordinates by recursively calling isManagerSalaryHigher for the left and right subordinates if they exist, and summing their salaries.
-If the employee’s salary is higher than the total salary of their subordinates, return true. Otherwise, return false.
+In this function, first check if the employee is a leaf node (i.e., has no subordinates).
+If so, return true since this employee is not a manager.
+Calculate the total salary of the subordinates by recursively calling isManagerSalaryHigher for the left and right subordinates 
+    if they exist, and summing their salaries.
+If the employee’s salary is higher than the total salary of their subordinates, return true. 
+Otherwise, return false.
 */
 
 class Employee {
